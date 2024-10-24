@@ -66,33 +66,6 @@ RUN --mount=type=cache,id=ragflow_builder_poetry,target=/root/.cache/pypoetry,sh
 FROM base AS production
 USER root
 
-# # ollama
-# # 使用Ollama的官方Docker镜像作为基础
-# FROM ollama/ollama:latest
-
-# # 设置工作目录
-# WORKDIR /app
-
-# # 将你的RAGFlow代码复制到容器中
-# COPY . /app
-
-# # 安装RAGFlow的依赖
-# RUN pip install -r requirements.txt
-
-# # 暴露端口
-# EXPOSE 9380
-
-# # 运行RAGFlow服务
-# CMD ["python", "ragflow_app.py"]
-# 安装Ollama的依赖项
-RUN apt-get update && apt-get install -y libssl1.1 libgdiplus
-
-# 设置环境变量
-ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
-
-# 从Ollama的本地构建镜像中复制Ollama
-COPY --from=ollama:local /usr/local/bin/ollama /usr/local/bin/ollama
-
 WORKDIR /ragflow
 
 # Install python packages' dependencies

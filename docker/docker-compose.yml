@@ -29,3 +29,7 @@ services:
     networks:
       - ragflow
     restart: always
+    # network_mode: host
+
+# extra_hosts:
+  # - "host.docker.internal:host-gateway"

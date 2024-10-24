@@ -2,6 +2,8 @@ services:
   es01:
     container_name: ragflow-es-01
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
+    # image: docker.io/infiniflow:${STACK_VERSION}
+    # image: 
     volumes:
       - esdata01:/usr/share/elasticsearch/data
     ports:
@@ -101,3 +103,7 @@ volumes:
 networks:
   ragflow:
     driver: bridge
+    # driver: host
+
+# extra_hosts:
+  # - "host.docker.internal:host-gateway"
